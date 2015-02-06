@@ -1,18 +1,18 @@
 # Site settings
-title:       Pixyll
+title:       jonginn.com
 email:       jon@jonginn.com
 author:      Jonathan Ginn
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+description: "Jonathan Ginn, Front End Developer &amp; Event Organiser."
 baseurl:     ""
 url:         "http://jonginn.com"
 
 # Google analytics
-google_analytics:
+google_analytics: UA-30647776-1
 
 # Optional features
 animated:           false
 show_related_posts: false
-show_post_footers:  false
+show_post_footers:  true
 
 # Disqus post comments
 # (leave blank to disable Disqus)
