@@ -6,6 +6,8 @@ $font-family-sans-serif: 'proxima-nova', 'Helvetica Neue', Helvetica, sans-serif
 body {
   font-family: $font-family-serif;
   font-weight: 300;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 html, body {
