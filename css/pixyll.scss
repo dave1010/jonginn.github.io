@@ -4,6 +4,18 @@
 
 @charset "utf-8";
 
+$palette-orange: #E74700;
+$palette-grey: #3D3D3D;
+$palette-navy: #4D6684;
+$palette-blue: #1499D3;
+$palette-green: #83AA30;
+
+$desaturation: 20;
+$theme-highlight: $palette-orange;
+$theme-dark: $palette-grey;
+$theme-blue: desaturate($palette-blue, $desaturation);
+$theme-green: desaturate($palette-green, $desaturation);
+
 @import "basscss";
 @import "bass/grid";
 @import "bass/utility-responsive-states";

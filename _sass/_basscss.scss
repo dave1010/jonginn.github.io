@@ -673,11 +673,11 @@ body {
 }
 
 a {
-  color: #0096cc;
+  color: $theme-highlight;
   text-decoration: none;
 }
 a:hover {
-  color: #007199;
+  color: darken($theme-highlight, 5);
 }
 
 .button {
