@@ -15,6 +15,7 @@ $theme-highlight: $palette-orange;
 $theme-dark: $palette-grey;
 $theme-blue: desaturate($palette-blue, $desaturation);
 $theme-green: desaturate($palette-green, $desaturation);
+$theme-navy: desaturate($palette-navy, $desaturation);
 
 @import "basscss";
 @import "bass/grid";
