@@ -8,6 +8,10 @@ body {
   font-weight: 300;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-size: 1.5rem;
+          box-sizing: border-box;
+     -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 html, body {
@@ -39,14 +43,6 @@ img {
 
 .footer, .site-wrap:after {
   height: 120px;
-}
-
-body {
-  font-size: 1.5rem;
-
-          box-sizing: border-box;
-     -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 }
 
 .gist,
@@ -204,7 +200,9 @@ table {
 }
 
 .wrap .measure, .wrap .measure-wide {
-  margin: 0 auto;
+  // margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .meta,
@@ -249,7 +247,7 @@ textarea.input {
 p {
   font-weight: 300;
   line-height: 1.5;
-  color: #333;
+  color: inherit;
 }
 
 abbr {
