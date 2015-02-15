@@ -27,3 +27,20 @@ ul.list-simple {
   background: $theme-navy;
   color: #fff;
 }
+
+.content-wrapper_bordered {
+  border-top: 1px solid $theme-blue;
+}
+
+h1 {
+  img.show-on-hover {
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  &:hover {
+    img.show-on-hover {
+      opacity: 1;
+    }
+  }
+}
