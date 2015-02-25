@@ -20,6 +20,7 @@ $theme-navy: desaturate($palette-navy, $desaturation);
 @import "basscss";
 @import "bass/grid";
 @import "bass/utility-responsive-states";
+@import "responsive-embed";
 @import "main";
 @import "home";
 @import "solarized-dark";
