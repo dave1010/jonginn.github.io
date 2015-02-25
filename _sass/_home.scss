@@ -16,11 +16,19 @@ ul.list-simple {
 .content-wrapper_blue {
   background: $theme-blue;
   color: #fff;
+
+  a {
+    color: $palette-grey;
+  }
 }
 
 .content-wrapper_green {
   background: $theme-green;
   color: #fff;
+
+  a {
+    color: $palette-blue;
+  }
 }
 
 .content-wrapper_navy {
@@ -43,4 +51,20 @@ h1 {
       opacity: 1;
     }
   }
+}
+
+.home-background {
+  background: {
+    image: url('../images/home-background.jpg');
+    position: center center;
+    repeat: no-repeat;
+    size: 100% auto;
+  }
+
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+  height: 400px;
 }

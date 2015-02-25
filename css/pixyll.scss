@@ -11,7 +11,7 @@ $palette-blue: #1499D3;
 $palette-green: #83AA30;
 
 $desaturation: 20;
-$theme-highlight: $palette-orange;
+$theme-highlight: $palette-green;
 $theme-dark: $palette-grey;
 $theme-blue: desaturate($palette-blue, $desaturation);
 $theme-green: desaturate($palette-green, $desaturation);

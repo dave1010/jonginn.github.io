@@ -80,6 +80,10 @@ img {
   padding: 0;
 }
 
+p.post-summary {
+  color: #333;
+}
+
 .site-header a:hover,
 .posts .post a:hover .post-meta,
 .posts .post a:hover .post-title,
@@ -429,8 +433,8 @@ h6,
     width: 100%;
     float: left;
     text-align: center;
-    margin-top: 0.666em;
-    margin-bottom: 1.333em;
+    // margin-top: 0.666em;
+    // margin-bottom: 1.333em;
   }
 
   .social-icons .left, .social-icons .right {
