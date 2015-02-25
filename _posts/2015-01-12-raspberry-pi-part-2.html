@@ -1,0 +1,49 @@
+---
+layout: post
+title: Raspberry Pi, Part 2
+date: 2015-01-12 22:14:37.000000000 +00:00
+categories:
+- Hacks
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '2'
+author:
+  login: jon
+  email: jon@jonginn.com
+  display_name: Jonathan Ginn
+  first_name: Jonathan
+  last_name: Ginn
+---
+<p><a href="http://ginnterest.com/2015/raspberry-pi-part-one/">Part 1 here</a>. This post concerns setting up a Static IP for Ethernet and Wi-Fi and the problems with setting up the latter.</p>
+<h3>Setting a Local Static IP (Ethernet)</h3>
+<p>To set the static IP, I followed <a href="http://www.suntimebox.com/raspberry-pi-tutorial-course/week-3/day-5/">this guide here</a>, everything from the start to the first reboot. The guide is pretty good, but it flummoxed me on the 'network' option in the static ip.</p>
+<p>I put a total guess in as 192.168.1.0, based on the table produced from 'sudo route -nee', where 192.168.1.254 is the Gateway and 192.168.1.0 is the Destination. Total guess, but it worked.</p>
+<p><!--more--></p>
+<pre><strong>Destination | Gateway | Genmask</strong>
+0.0.0.0 | 192.168.1.254 | 0.0.0.0
+192.168.1.0 | 0.0.0.0 | 255.255.255.0</pre>
+<p>Here's the static ip I pasted into the file:</p>
+<pre>iface eth0 inet static
+address 192.168.1.220
+netmask 255.255.255.0
+network 192.168.1.0
+broadcast 192.168.1.255
+gateway 192.168.1.254</pre>
+<p>Now that I have set a local Static IP, the ssh pi@raspberrypi no longer works. I have to use the IP to SSH in.</p>
+<h3>Static IP for my Network</h3>
+<p>Next step was enabling a Static IP for my router, so I can access my Pi from afar. I use Plusnet, so I enabled it on the <a href="http://plus.net/AddOns.html">AddOns page here</a> for £5.</p>
+<p>Next, I port-forwarded my Router to the IP of my Pi, on port 22 so I can ssh in. I picked a port at random on the router. I used <a href="http://support.zen.co.uk/kb/Knowledgebase/Broadband-Technicolor-TG-582-Configure-Port-Forwarding">this guide here</a> as I have a Technicolor Gateway. This way anywhere around the world I can <em>ssh ip -p randomport </em>and it'll forward it to the right port.</p>
+<h3>Wi-Fi</h3>
+<p>I bought <a href="http://www.amazon.co.uk/gp/product/B003MTTJOY/ref=as_li_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B003MTTJOY&amp;linkCode=as2&amp;tag=gt00a-21&amp;linkId=NQMU4B2IQ3QMPMBH">this Wi-Fi adapter</a> for the Pi as it supports Plug-n-Play. I then removed the static ip on the Ethernet (to dhcp) and <a href="http://weworkweplay.com/play/automatically-connect-a-raspberry-pi-to-a-wifi-network/">used the following guide</a> to enable a connection with the Wi-Fi adapter.</p>
+<p>At first this guide didn't work (and neither did the Wi-Fi GUI) until I changed <em>iface wlan0 inet dhcp</em> to 'manual' instead of 'dhcp'. That was 15 minutes I'll never get back.</p>
+<p>For some reason at the top of my interfaces file it was set to 'auto lo' which I think sets it to localhost automatically. 'auto wlan0' fixed it. They mention this in the guide but I completely missed it.</p>
+<h4>Wi-Fi Static IP</h4>
+<p>Next step - setting it up so it has a static IP on the Wi-Fi. I put the same IP, netmask etc as the Ethernet on the Wi-Fi adapter by editing <em>/etc/network/interfaces</em> &amp; <em>/etc/wpa_supplicant/wpa_supplicant.conf</em>.</p>
+<p>In the guide they don't include a broadcast or network item. I kept exactly the same items as was on the ethernet. I also had to change 'manual' to 'static' as expected. After some wrangling, it has the IP address! Except it doesn't have an internet connection. Argh!</p>
+<p>Here's <a href="https://linuxtechie.wordpress.com/2014/08/23/setting-up-raspberry-pi-with-wifi-and-a-static-ip-on-a-hidden-ssid/">another guide</a> I found which includes gateway as an option. <a href="http://www.bot-thoughts.com/2013/01/raspberry-pi-wifi-static-ip.html">Here's another</a> that uses roaming profiles. Neither work. I'm probably missing something fundamental.</p>
+<p>Rolling back my changes puts me back on dynamic IP address.</p>
+<p><strong>Next time... hard drives! More power! </strong>And maybe I'll fix the Wi-Fi.</p>

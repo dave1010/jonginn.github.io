@@ -19,6 +19,7 @@ $theme-green: desaturate($palette-green, $desaturation);
 @import "basscss";
 @import "bass/grid";
 @import "bass/utility-responsive-states";
+@import "responsive-embed";
 @import "main";
 @import "home";
 @import "solarized-dark";

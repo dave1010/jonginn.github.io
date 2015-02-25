@@ -1,0 +1,55 @@
+---
+layout: post
+title: Sass 3.3 - Some things you might not know about
+date: 2014-03-13 14:02:26.000000000 +00:00
+categories:
+- Front End
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _ijsc-js: <script type="text/javascript" src="http://static.sassmeister.com/js/embed.js"
+    async></script>
+  tmac_last_id: ''
+  _edit_last: '2'
+author:
+  login: jon
+  email: jon@jonginn.com
+  display_name: Jonathan Ginn
+  first_name: Jonathan
+  last_name: Ginn
+---
+<p><a href="http://sass-lang.com/documentation/file.SASS_CHANGELOG.html">Sass 3.3 is out</a>! And it's quite nice. A lot of talk has been made over the new Maps function, which allows you to use keypair values of items. However, you've been able to do that for a while, albeit much less elegantly - I'll talk about that another time.</p>
+<p>However, 3.3 is packed with <strong>much more useful features</strong> than Maps. Here's some other features you might have missed.</p>
+<p><!--more--></p>
+<h3>&amp;_suffix</h3>
+<p>Hallelujah! You can now use &amp; as a child and add a suffix to the class name. This means markup like <code>.header .header_logo</code> can now be more consistent - now you don't need <code>.header .logo</code> and run into potential tripfalls.</p>
+<p>Let's check out a gist below of this in action.</p>
+<p class="sassmeister" data-gist-id="9528655" data-height="480"><a href="http://sassmeister.com/gist/9528655">Play with this gist on SassMeister.</a></p>
+<p>[javascript src="http://static.sassmeister.com/js/embed.js" async]</p>
+<p>It almost helps you mirror a <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">BEM markup style</a>, although this new function is through nesting and BEM should avoid that.</p>
+<p>It's worth noting that only a suffix works, prefixing a class (like .text_&amp;) will not work.</p>
+<h3>String functions</h3>
+<p>Now you can control a string more accurately. You can get the length, insert strings inside each other, slice, and make a string lowercase/uppercase.</p>
+<h3>See if something exists</h3>
+<p>You can now make sure a mixin exists before you call it and crash your compilation! Throw these in an @if and wave your life of compile-crashing errors goodbye. Much like everything in your Sass toolkit, there are plenty of ways to use these to make your life easier.</p>
+<ul class="list">
+<li><code>variable-exists($name)</code> checks if a variable resolves in the current scope.</li>
+<li><code>global-variable-exists($name)</code> checks if a global variable of the given name exists.</li>
+<li><code>function-exists($name)</code> checks if a function exists.</li>
+<li><code>mixin-exists($name)</code> checks if a mixin exists.</li>
+</ul>
+<h3>Random!</h3>
+<p>Sooo randum! Use <code><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#random-instance_method">random</a>()</code> to generate a random number. By default it'll give you 1 or 0.</p>
+<p>If you use a number inside <code>random()</code>, such as 5, the random number will be 1 to 4. The selection excludes the number you select.</p>
+<h3>at-root</h3>
+<p>At root lets you define a rule that will get placed at the top of your CSS document. Much like <code>@import</code> on an external file (like Google Webfonts), by using at-root you can be sure that a rule will find its way to the top.</p>
+<p>The style of at-root means that you can keep your rule in a logical place inside your SCSS files, knowing that it'll get pumped out to the top of the file when you compile.</p>
+<p><a href="http://www.alwaystwisted.com/post.php?s=2014-03-08-using-sass-33s-at-root-for-piece-of-mind">Stu Robson</a> has written a nice post on how to use at-root, so <a href="http://www.alwaystwisted.com/post.php?s=2014-03-08-using-sass-33s-at-root-for-piece-of-mind">check that out</a>.</p>
+<h3>Unique CSS ID</h3>
+<p>I'm not sure when this will be useful, but <code>unique-id()</code> now lets you generate a unique ID for each individual CSS file.</p>
+<h3>Turn that @for upside down</h3>
+<p>@fors can now go from top to bottom. <code>@for from 4 through 1</code> will go downwards through 4, 3, 2, 1.</p>
+<hr />
+<p>The new improvements in Sass 3.3 aren't anything revolutionary, but they introduce a new set of tools that will let you do your job better. I'm sure I'll find a use for these tools very soon in the future. There's a whole bunch more in the changelog, <a href="http://sass-lang.com/documentation/file.SASS_CHANGELOG.html">so check it out and find something useful for yourself</a>.</p>

@@ -1,0 +1,52 @@
+---
+layout: post
+title: Get the most out of your CSS
+date: 2015-01-31 13:51:26.000000000 +00:00
+categories:
+tags: []
+status: publish
+type: post
+published: true
+summary: Here's a quick few tips on how to cram your CSS files as you type.
+---
+<p>Here's a quick few tips on how to cram your CSS files as you type. This is prompted after my discussion with <a href="https://twitter.com/ben_eb/status/561277355424231425">@ben_eb on Twitter</a>.</p>
+<p>In fact, this post should probably be called 'get the least out of your CSS'.<!--more--></p>
+<p><em>Here's some music from CSS to go with this post.</em></p>
+<p><iframe src="https://embed.spotify.com/?uri=http://open.spotify.com/track/4nsHRGeUkeDKmJEs89LyC3" width="300" height="80" frameborder="0"></iframe></p>
+<h2>Tips</h2>
+<p>There's loads of little ways you can squeeze the bytes out of your CSS. It might seem pointless to do these tricks, but by trimming bytes  here and there the filesavings add up. Like my mother always says - look after the bytes, and the kilobytes will look after themselves. Well, maybe not. But still.</p>
+<h3>Hex Code</h3>
+<p>You can shorten most hex codes - why type #000000 when #000 does the same thing? #112233 can also be squished to #123. Some hexes can't be squished, like #bada55.</p>
+<p>The same thing applies to colour names - avoid using names. Why 'black' when you could use #000?</p>
+<p>If you're not a robot and using hexes confuses when compared to colour names, then use Sass to fill in that blank. Example:</p>
+<pre>$white: #fff;
+
+.thing {
+  color: $white;
+}</pre>
+<h3>0 not None</h3>
+<p>When typing 'border: none;', use 'border: 0;' instead. Does the same thing in a quarter of the size. You can apply this to a lot of things.</p>
+<h3>Drop the 0 on a point</h3>
+<p>Instead of '0.4' when using opacity (or shadows), just use '.4'. Simple.</p>
+<h3>Margin</h3>
+<ul>
+<li>Instead of margin: 0 0 0 0; do margin: 0;.</li>
+<li>Instead of margin: 45px 0 0 0; do margin: 45px 0 0;.</li>
+<li>Instead of margin: 45px 0 45px 0; do margin: 45px 0;</li>
+</ul>
+<p>Most of these are obvious but the middle one I always forgot to do. Sass Lint (see below) helps with that.</p>
+<p style="text-align: center;"><strong>Got more tips to share? <a href="http://twitter.com/jonginn">Get in touch</a>!</strong></p>
+<h2>Sass Lint</h2>
+<p>I learned most of these shorthands through the <a href="https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint">Scss-lint plugin for Sublime Text</a>. It warns you in places where you could make your Sass more sane by providing an interface to the gem scss-lint. <a href="https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint">Try it out</a>.</p>
+<p>It'll also direct you to merge your selectors and make your code easier to read.</p>
+<h2>Compress your CSS</h2>
+<p>You can try all the methods above, but if you're still delivering a non-minified CSS file you're not getting the most out of your CSS.</p>
+<p>I started originally by using the default Sass/Compass minifier included. This simply squishes the file down, removing the whitespace and comments - which certainly helps!</p>
+<p>Then I moved onto <a href="https://www.npmjs.com/package/gulp-minify-css">gulp-css-minify</a> (uses <a href="https://github.com/jakubpawlowicz/clean-css">clean-css</a>) when I started using Gulp. It provides the same as above, removing whitespace, comments, and other bits.</p>
+<h3>CSSO</h3>
+<p>But now, the crown jewel is <a href="https://www.npmjs.com/package/csso">CSSO</a>. I use it through the <a href="https://github.com/ben-eb/gulp-csso">gulp-csso</a> plugin. Not only does it perform standard compression, it also makes the changes I said above - squishing your hex codes, turning 'none' into 0, decimal points, and <a href="http://bem.info/tools/optimizers/csso//#minification-in-a-nutshell">a lot more</a>.</p>
+<p>If you're using Wordpress, you need to keep the first comment for the Theme. <a href="http://bem.info/tools/optimizers/csso/description/#removal-of-comments">Make sure CSSO doesn't remove it</a> by adding a ! to the first opening block, like: /*!.</p>
+<p>But it can also be turned up a notch with <a href="http://bem.info/tools/optimizers/csso/description/#structural-optimizations">Structural Optimisations</a>. It can merge similar selectors, split blocks up, and make decisions on what will save filesize. On an average CSS file, it saved 10% when compared to other minifiers. Bonkers. <a href="http://css.github.io/csso/csso.html">Go out and give it a try in your browser</a>.</p>
+<p>Bear in mind that with Structural Optimisations on, it's moving your selectors around. It shouldn't do anything crazy, but it may affect the way your CSS renders. Be sure to test and keep an eye on the output.</p>
+<hr />
+<p>Hopefully these quick tips will give you some pointers on how to save bits and bytes in your CSS. Every saving helps.</p>
