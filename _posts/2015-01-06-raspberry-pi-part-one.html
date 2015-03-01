@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Raspberry Pi project, the beginning
+title: Raspberry Pi, Part 1
 date: 2015-01-06 20:41:10.000000000 +00:00
+summary: Raspbian, Remote Access, Pushbullet
 categories:
-- Hacks
 tags: []
 status: publish
 type: post
@@ -22,12 +22,12 @@ author:
 ---
 <p>I got a <a href="http://www.amazon.co.uk/gp/product/B00LU2FDG8/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1634&amp;creative=6738&amp;creativeASIN=B00LU2FDG8&amp;linkCode=as2&amp;tag=ginnterest-21&amp;linkId=VEVFN3YXSMMZ2J2F">Raspberry Pi B+</a> for Christmas, and I'm going to slowly turn it into a home automation server. I'll probably make it overheat or explode or die horribly, but it'll be an adventure on the way.</p>
 <p><!--more--></p>
-<p>I followed <a href="http://blog.bittorrent.com/2013/05/23/how-i-created-my-own-personal-cloud-using-bittorrent-sync-owncloud-and-raspberry-pi/">Step 1 here</a> from the Bittorrent Cloud Sync blog to get Raspian installed. My Raspian came as part of the NOOBS package on the Micro SD card in my 'starter pack' for the Rasp-pi.</p>
+<p>I followed <a href="http://blog.bittorrent.com/2013/05/23/how-i-created-my-own-personal-cloud-using-bittorrent-sync-owncloud-and-raspberry-pi/">Step 1 here</a> from the Bittorrent Cloud Sync blog to get Raspbian installed. My Raspbian came as part of the NOOBS package on the Micro SD card in my 'starter pack' for the Rasp-pi.</p>
 <p>With that, I can now ssh as pi@ip, or actually with pi@raspberrypi works just as well on the local network, assuming you only have one pi.</p>
 <h3>Remote Access</h3>
 <p>But I'd also like desktop access on occasion - because I'm not 100% au-fait with the command line. But so far (by the end of this post) I've not used the desktop remote access. But I installed it with 'xdrp' as detailed <a href="https://www.jeremymorgan.com/tutorials/raspberry-pi/how-to-remote-desktop-raspberry-pi/">in this post here</a>, then use <a href="http://cord.sourceforge.net/">CoRD on OSX</a> to access the Pi.</p>
 <h3>Pushbullet</h3>
-<p>With Raspian installed, I haven't yet got a static ip set up. Logic says that should be the next step, but I fancied something a bit more fun, and set up my Pi to Pushbullet me the ip when it boots up. <a href="http://www.raspberrypi.org/forums/viewtopic.php?t=79151&amp;p=561980">I used this forum post here</a>, with a few minor changes.</p>
+<p>With Raspbian installed, I haven't yet got a static ip set up. Logic says that should be the next step, but I fancied something a bit more fun, and set up my Pi to Pushbullet me the ip when it boots up. <a href="http://www.raspberrypi.org/forums/viewtopic.php?t=79151&amp;p=561980">I used this forum post here</a>, with a few minor changes.</p>
 <p>I couldn't seem to find my "device id", so I just left that empty, so it pushes to all my devices. That's fine by me. Here's my file:</p>
 <pre>#!/bin/bash
 ipVar=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')

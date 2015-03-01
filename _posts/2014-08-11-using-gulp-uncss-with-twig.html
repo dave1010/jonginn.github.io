@@ -3,48 +3,14 @@ layout: post
 title: Using gulp uncss with twig
 date: 2014-08-11 13:01:17.000000000 +01:00
 categories:
-- Front End
 tags: []
+summary:
 status: publish
 type: post
 published: true
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '2'
-  _oembed_9c8fbb12f8ca9d31a517d63ad9a57de4: <blockquote class="twitter-tweet" width="550"><p>Anyone
-    had any luck using <a href="https://twitter.com/hashtag/twig?src=hash">#twig</a>
-    with <a href="https://twitter.com/hashtag/uncss?src=hash">#uncss</a>? gulp-uncss
-    doesn&#39;t take URLs, just files - so twig won&#39;t work. <a href="https://twitter.com/hashtag/lazyweb?src=hash">#lazyweb</a></p>&mdash;
-    Jonathan Ginn (@jonginn) <a href="https://twitter.com/jonginn/statuses/496579808374300672">August
-    5, 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js"
-    charset="utf-8"></script>
-  _oembed_dd1b1a75830d77e30fc55c4765565027: <blockquote class="twitter-tweet" width="550"><p>Anyone
-    had any luck using <a href="https://twitter.com/hashtag/twig?src=hash">#twig</a>
-    with <a href="https://twitter.com/hashtag/uncss?src=hash">#uncss</a>? gulp-uncss
-    doesn&#39;t take URLs, just files - so twig won&#39;t work. <a href="https://twitter.com/hashtag/lazyweb?src=hash">#lazyweb</a></p>&mdash;
-    Jonathan Ginn (@jonginn) <a href="https://twitter.com/jonginn/status/496579808374300672">August
-    5, 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js"
-    charset="utf-8"></script>
-  _oembed_time_dd1b1a75830d77e30fc55c4765565027: '1421954473'
-  _oembed_1112b98c641588fd2394c09d4ae880c1: <blockquote class="twitter-tweet" width="550"><p>Anyone
-    had any luck using <a href="https://twitter.com/hashtag/twig?src=hash">#twig</a>
-    with <a href="https://twitter.com/hashtag/uncss?src=hash">#uncss</a>? gulp-uncss
-    doesn&#39;t take URLs, just files - so twig won&#39;t work. <a href="https://twitter.com/hashtag/lazyweb?src=hash">#lazyweb</a></p>&mdash;
-    Jonathan Ginn (@jonginn) <a href="https://twitter.com/jonginn/status/496579808374300672">August
-    5, 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js"
-    charset="utf-8"></script>
-  _oembed_time_1112b98c641588fd2394c09d4ae880c1: '1418853001'
-author:
-  login: jon
-  email: jon@jonginn.com
-  display_name: Jonathan Ginn
-  first_name: Jonathan
-  last_name: Ginn
 ---
 <p>I'm using <a href="http://twig.sensiolabs.org/">Twig</a> to run my personal site, and then using <a href="http://gulpjs.com/">Gulp</a> to compress the CSS to new levels. As part of that, I want to use uncss to really kill off as much CSS as I can.</p>
-<p>https://twitter.com/jonginn/status/496579808374300672</p>
 <p>I couldn't find anywhere on the internet where someone had solved this, so I've managed to work it out myself. Somehow.</p>
-<p><!--more--></p>
 <p>I'm not using Gulp to compile the SCSS to CSS, as currently gulp-compass isn't very reliable (and slow). If anyone's solved <em>that</em> problem, let me know.</p>
 <p><a href="https://github.com/giakki/uncss">Uncss runs through your site</a> and determines what CSS you're <em>not </em>using - and <a href="https://www.npmjs.org/package/gulp-uncss">gulp-uncss</a> allows for that in gulp. However, as far as I can tell, the gulp version doesn't take URLs, only files or direct HTML input - which means Twig is out, as a typical twig site is made up of several template files.</p>
 <p>However, using my limited knowledge of node solved the issue. Using fs (filesystem) and request, I go to the URL of the site (in this case, my local dev site) and download it as a HTML file, which uncss can then scrape.</p>
