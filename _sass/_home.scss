@@ -10,15 +10,65 @@ ul.list-simple {
 }
 
 .content-wrapper {
-
+  a {
+    &:hover {
+      text-decoration: underline;    
+    }
+  }
 }
 
 .content-wrapper_blue {
   background: $theme-blue;
   color: #fff;
+
+  a {
+    color: $theme-blue-darker;
+  }
 }
 
 .content-wrapper_green {
   background: $theme-green;
   color: #fff;
+
+  a {
+    color: $theme-green-darker;
+  }
+}
+
+.content-wrapper_navy {
+  background: $theme-dark;
+  color: #fff;
+}
+
+.content-wrapper_bordered {
+  border-top: 1px solid $theme-blue;
+}
+
+h1 {
+  img.show-on-hover {
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  &:hover {
+    img.show-on-hover {
+      opacity: 1;
+    }
+  }
+}
+
+.home-background {
+  background: {
+    image: url('../images/home-background.jpg');
+    position: center center;
+    repeat: no-repeat;
+    size: 100% auto;
+  }
+
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+  height: 400px;
 }
