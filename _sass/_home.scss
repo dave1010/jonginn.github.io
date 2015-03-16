@@ -72,3 +72,20 @@ h1 {
 
   height: 400px;
 }
+
+.background-cover {
+  background: {
+    position: center center;
+    repeat: no-repeat;
+    size: 100% auto;
+  }
+
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.content-faded {
+  opacity: .5;
+}
