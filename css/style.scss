@@ -25,6 +25,7 @@ $theme-blue-darker: darken($theme-blue, $darken);
 @import "bass/grid";
 @import "bass/utility-responsive-states";
 @import "responsive-embed";
+@import "buttons";
 @import "main";
 @import "home";
 @import "solarized-dark";
