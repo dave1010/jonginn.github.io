@@ -10,17 +10,23 @@ $palette-navy: #4D6684;
 $palette-blue: #1499D3;
 $palette-green: #83AA30;
 
-$desaturation: 20;
-$theme-highlight: $palette-green;
+$desaturation: 10;
+$darken: 25;
+
+$theme-highlight: $palette-grey;
 $theme-dark: $palette-grey;
 $theme-blue: desaturate($palette-blue, $desaturation);
 $theme-green: desaturate($palette-green, $desaturation);
 $theme-navy: desaturate($palette-navy, $desaturation);
 
+$theme-green-darker: darken($theme-green, $darken);
+$theme-blue-darker: darken($theme-blue, $darken);
+
 @import "basscss";
 @import "bass/grid";
 @import "bass/utility-responsive-states";
 @import "responsive-embed";
+@import "buttons";
 @import "main";
 @import "home";
 @import "solarized-dark";
